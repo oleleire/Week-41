@@ -122,14 +122,4 @@ blink6();
 
 
 
-/*
-
-Oppgaven: 
-
-- Kaller gjennomsnittfunksjonen (snittet av 5 sensoravlesinger)
-- Kaller en av LED-blinke-funksjonene,og hvilken avhenger av verdien gjennomsnittfunksjonen returnerer:
-
-Dersom verdien er 100 eller større skal LEDen blinke 1 gang hvert sekund.
-Dersom verdien er mindre enn 100 skal den blinke 6 ganger merkbart raskere
-*/
 
