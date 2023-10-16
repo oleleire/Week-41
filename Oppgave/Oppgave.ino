@@ -118,7 +118,6 @@ blink6();
 
 
 /*
-
 Oppgaven: 
 
 - Kaller gjennomsnittfunksjonen (snittet av 5 sensoravlesinger)
