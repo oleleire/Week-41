@@ -6,7 +6,6 @@ const unsigned long eventInterval = 150;
 unsigned long previousTime = 0;
 unsigned long currentTime = 0;
 
-
 const unsigned long eventInterval2 = 1000;
 unsigned long previousTime2 = 0;
 unsigned long currentTime2 = 0;
