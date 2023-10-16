@@ -19,6 +19,7 @@ const unsigned long eventInterval4 = 1000/6;
 unsigned long previousTime4 = 0;
 unsigned long currentTime4 = 0;
 
+// Lager globale variabler 
 int gammelVerdi = 0;
 int sensorValInn = 0; 
 int sensorValOut = 0;
@@ -45,21 +46,15 @@ unsigned long currentTime = millis();
 
 
 if (currentTime - previousTime >= eventInterval){
-     verdi = verdi - sensorValList[index];
-     sensorValInn = analogRead(sensorPin);
-     sensorValInn = map (sensorValInn, 0, 1023, 0, 150);
-     sensorValList [index] = sensorValInn;
-     //verd = 0 ;
-     verdi =verdi + sensorValInn;
-     index = (index +1) % 4;
-     //Serial.println(verdi);
+     verdi = verdi - sensorValList[index]; //Fjerner en elsdte sensorverdien 
+     sensorValInn = analogRead(sensorPin); //Leser neste sensorverdi
+     sensorValInn = map (sensorValInn, 0, 1023, 0, 150); //Omgjør sensorverdien fra 0-1023 til 0-150
+     sensorValList [index] = sensorValInn; //Legger til den nyste sensorverdien i arrayet 
+     verdi =verdi + sensorValInn; //Legger til den nyste sensorverdien i verdien 
+     index = (index +1) % 4; //Øker indeksen og tilbakestiller den til 0 hvis den overskrider vindusstørrelsen
      previousTime = currentTime; 
-
-       //Serial.println(sensorValList[i]);
        
     }
-
-
 }
 
 
@@ -67,8 +62,8 @@ if (currentTime - previousTime >= eventInterval){
 void snittverdi(){
     unsigned long currentTime2 = millis();
     if (currentTime2 - previousTime2 >= eventInterval2){
-        gjennomsnitt = (verdi ) /5;
-        Serial.println(gjennomsnitt);
+        gjennomsnitt = (verdi ) /5; //Regner ut gjennomsnittsverdien 
+        Serial.println(gjennomsnitt); //Skriver ut gjennomsnittet til seriemonitoren 
         previousTime2 = currentTime2; 
     }
 }
@@ -88,9 +83,6 @@ void blink1(){
       digitalWrite(redLed, ledState);
     }
 
-
-    // set the LED with the ledState of the variable:
-    
 }
 }
 
