@@ -2,7 +2,7 @@
 const int redLed = 8;
 const int sensorPin = A0;
 
-const unsigned long eventInterval = 1000;
+const unsigned long eventInterval = 150;
 unsigned long previousTime = 0;
 unsigned long currentTime = 0;
 const unsigned long eventInterval2 = 1000;
@@ -42,15 +42,15 @@ unsigned long currentTime = millis();
 
 if (currentTime - previousTime >= eventInterval){
      sensorValInn = analogRead(sensorPin);
+     sensorValInn = map (sensorValInn, 0, 1023, 0, 150);
      //Serial.println(sensorValInn);
-     sensorValOut = map (sensorPin, 0, 1023, 0, 200);
      previousTime = currentTime; 
      verdi = 0;
      
      for (int i=0; i<=4; i++){
-       sensorValList[i] = sensorValOut;
+       sensorValList[i] = sensorValInn;
 
-        //Serial.println(sensorValList[i]);
+       //Serial.println(sensorValList[i]);
        verdi =verdi + sensorValList[i];
     }
 
@@ -74,14 +74,18 @@ void blink1(){
     if (currentTime3 - previousTime3 >= eventInterval3){
         previousTime3 = currentTime3; 
     
-    /*if (ledState == LOW) {
+    if (gjennomsnitt >= 100){
+    if (ledState == LOW) {
       ledState = HIGH;
     } else {
       ledState = LOW;
     }
-*/
+      digitalWrite(redLed, ledState);
+    }
+
+
     // set the LED with the ledState of the variable:
-    digitalWrite(redLed, HIGH);
+    
 }
 }
 
@@ -90,16 +94,19 @@ void blink6(){
     if (currentTime4 - previousTime4 >= eventInterval4){
         previousTime4 = currentTime4; 
         
-    /*if (ledState == LOW) {
+    if (gjennomsnitt <= 100) {
+
+    if (ledState == LOW){
       ledState = HIGH;
+    
     } else {
       ledState = LOW;
     }
-    */
-    digitalWrite(redLed, HIGH);
+    
+    digitalWrite(redLed, ledState);
 }
 }
-
+}
 
 void loop(){
 sensorVerdi();
