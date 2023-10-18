@@ -86,7 +86,8 @@ void blink6() {
   if (currentTime4 - previousTime4 >= eventInterval4) {
     previousTime4 = currentTime4; 
 
-    if (gjennomsnitt <= 100) { //Hvis gjennomsnittet av sensorverdiene er mindre eller lik, blinker led-en seks ganger raskere. 
+//Hvis gjennomsnittet av sensorverdiene er mindre eller lik, blinker led-en seks ganger raskere. 
+    if (gjennomsnitt <= 100) { 
       if (ledState == LOW) {
         ledState = HIGH;
       } else {
@@ -97,6 +98,7 @@ void blink6() {
   }
 }
 
+ //Kaller på de egendefinerte funksjonene 
 void loop() {
   sensorVerdi();  
   snittverdi();   
